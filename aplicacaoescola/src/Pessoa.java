@@ -15,6 +15,13 @@ private String nome;
     Pessoa (String nome){
     this.nome=nome;
     }
+
+    String getNome() {
+        this.nome=nome;
+        return nome;
+        
+    }
+    
  
 
 
