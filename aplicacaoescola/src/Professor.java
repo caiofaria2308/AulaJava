@@ -9,13 +9,23 @@
  * @author Aluno
  */
 public class Professor extends Pessoa {
-    Professor(String nome)
+   Professor(String nome)
     {
+        
     super(nome);
+    String a1=nome;
+    
+    
     }
    public void DarAula()
     {
     System.out.println("Dando aula");
+    
     }
+   public String getnome()
+   {
+      return this.nome; 
+   }
+   
     
 }

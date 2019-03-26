@@ -9,7 +9,7 @@
  * @author Aluno
  */
 public abstract class Pessoa {
-private String nome;
+String nome;
 
 
     Pessoa (String nome){

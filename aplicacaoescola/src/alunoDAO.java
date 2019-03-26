@@ -8,38 +8,54 @@
  *
  * @author Caio
  */
-import com.mysql.jdbc.*;
 import java.sql.SQLException;
+import java.sql.*;
 public class alunoDAO {
     private Connection conn;
     
-        public alunoDAO(Connection c)
+    
+        public alunoDAO()
         {
-            this.conn=c;
-            
-           
+            //classe
         }
 
-    alunoDAO() throws SQLException {
-        
-        insert(null);
+    alunoDAO(Connection c) {
+        //metodo que pega a conexão
+        this.conn=c;
     }
-
-
  
-        public void  insert (Pessoa p) throws SQLException
+      public void  inserir (String nome) throws SQLException
         {
-            conexao c= new conexao();
-            c.conectar();
+            
+            
             try{
-            String sql="insert into aluno(nome) values ('"+p.getNome()+"');";
-              java.sql.PreparedStatement ps= this.conn.prepareStatement(sql);
+            String sql="insert into aluno(nome) values ('"+nome+"');";
+              java.sql.PreparedStatement ps= conn.prepareStatement(sql);
             ps.executeUpdate();
             ps.close();
             String res=("Tudo ok");
+            System.out.println(res);
+            
             
             }
-            catch(Exception ex){String res="Não deu certo"; }
+            catch(Exception ex){System.out.println(ex);}
           
         }
+      
+      public void update(String nome,String antigo)throws Exception
+      {
+          try
+          {
+              String sql="update aluno set nome='"+nome+"' where nome='"+antigo+"' ";
+              java.sql.PreparedStatement ps=conn.prepareStatement(sql);
+              ps.executeUpdate();
+              ps.close();
+              System.out.println("Nome atualizado");
+              
+          }catch(Exception ex){System.out.println(ex);}
+      }
+
+         
+         
+   
 }

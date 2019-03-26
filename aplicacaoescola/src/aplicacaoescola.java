@@ -1,4 +1,5 @@
 
+import java.sql.Connection;
 import java.sql.SQLException;
 
 /*
@@ -17,13 +18,18 @@ public class aplicacaoescola
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) throws SQLException, Exception {
         // TODO code application logic here
-       Pessoa p1=new Professor("Wagnão Maravilhoso");
+       Pessoa p1=new Professor("meu Lindo");
        System.out.println(p1.getNome());
-        Professor pf=new Professor("Zé");
+        Professor pf=new Professor("Ricardo");
         pf.DarAula();
-        alunoDAO al= new alunoDAO();
+        conexao con=new conexao();
+        alunoDAO al = new alunoDAO(con.conectar());
+        al.inserir(p1.getNome());
+        al.update("Wagner","zé");
+        
+        
         
         
     }
