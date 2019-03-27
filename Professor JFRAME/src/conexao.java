@@ -18,6 +18,7 @@ public class conexao {
         banco b= new banco();
         b.conectar();
         JFrame jf= new JFrame();
+        jf.setVisible(true);
         
     }
     
