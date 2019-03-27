@@ -16,11 +16,14 @@ public class JFrame extends javax.swing.JFrame {
      * Creates new form JFrame
      */
     private Connection conn;
+    
     public JFrame() {
+        super ("Upgrade Aplicação aluno");
         initComponents();
         
         banco b= new banco();
         conn=b.conectar();
+        
         
     }
 
@@ -185,7 +188,6 @@ public class JFrame extends javax.swing.JFrame {
             }
         });
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton atualizar1;
     private javax.swing.JButton cad;
