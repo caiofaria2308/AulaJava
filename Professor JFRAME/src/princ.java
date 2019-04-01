@@ -26,21 +26,77 @@ public class princ extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        bAluno = new javax.swing.JButton();
+        bProf = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setText("CADASTROS");
+
+        bAluno.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        bAluno.setText("Aluno");
+        bAluno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bAlunoActionPerformed(evt);
+            }
+        });
+
+        bProf.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        bProf.setText("Professor");
+        bProf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bProfActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(148, 148, 148)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(82, 82, 82)
+                        .addComponent(bAluno)
+                        .addGap(87, 87, 87)
+                        .addComponent(bProf)))
+                .addContainerGap(85, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(51, 51, 51)
+                .addComponent(jLabel1)
+                .addGap(49, 49, 49)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bAluno)
+                    .addComponent(bProf))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void bAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAlunoActionPerformed
+
+JFrame jf=new JFrame();
+jf.setVisible(true);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bAlunoActionPerformed
+
+    private void bProfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bProfActionPerformed
+
+        Professor p=new Professor();
+        p.setVisible(true);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bProfActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +134,8 @@ public class princ extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bAluno;
+    private javax.swing.JButton bProf;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
