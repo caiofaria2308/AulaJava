@@ -31,7 +31,8 @@ create table turma
 );
 create table turmadealunos
 (
-	turma int not null auto_increment primary key,
+	id int not null auto_increment primary key,
+	turma int not null,
 	aluno_id int not null,
 	foreign key (turma) references turma(id),
 	foreign key (aluno_id) references aluno (id)
