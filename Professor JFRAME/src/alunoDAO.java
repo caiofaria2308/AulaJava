@@ -9,6 +9,7 @@
  * @author Caio
  */
 import java.sql.*;
+import java.util.*;
 import static javax.swing.JOptionPane.showMessageDialog;
 public class alunoDAO {
     private Connection conn;
@@ -38,7 +39,7 @@ public class alunoDAO {
             String sql="update aluno set nome='"+nNew+"' where cod='"+cod+"' ";
             java.sql.PreparedStatement ps= conn.prepareStatement(sql);
             ps.executeUpdate();
-            showMessageDialog(null,"Atualizado com sucesso "+nNew+" "+cod);
+            showMessageDialog(null,"Atualizado com sucesso ");
             
         }catch(SQLException ex){showMessageDialog(null,ex);}
     }
@@ -52,6 +53,30 @@ public class alunoDAO {
             ps.close();
             showMessageDialog(null,"Deletado com sucesso!");
         }catch(Exception ex){showMessageDialog(null,ex);}
+    }
+    public void select() throws SQLException
+    {
+     List listar= new ArrayList();
+        String sql="select* from aluno";
+        
+        try
+        {
+            java.sql.PreparedStatement ps= conn.prepareStatement(sql);
+            ResultSet rs=ps.executeQuery();
+            
+            while (rs.next())
+            {
+                int id= rs.getInt("cod");
+                String name= rs.getString("nome");
+               
+                
+                listar.add("\nCÓDIGO: "+id+" \nNOME: "+name+"\n");
+            }
+            showMessageDialog(null,listar);
+            
+        }catch(Exception ex){showMessageDialog(null,ex);        }
+        
+        
     }
     
 }

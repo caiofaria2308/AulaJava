@@ -28,6 +28,7 @@ public class aplicacaoescola
         alunoDAO al = new alunoDAO(con.conectar());
         al.inserir(p1.getNome());
         al.update("Wagner","zé");
+        System.out.println(al.aluno());
         
         
         

@@ -12,14 +12,14 @@ import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import static javax.swing.JOptionPane.showMessageDialog;
-public class JFrame extends javax.swing.JFrame {
+public class Professor extends javax.swing.JFrame {
 
     /**
      * Creates new form JFrame
      */
     private Connection conn;
     
-    public JFrame() {
+    public Professor() {
         super ("Upgrade Aplicação aluno");
         initComponents();
         

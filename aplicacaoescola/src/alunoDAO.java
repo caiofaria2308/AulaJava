@@ -10,6 +10,7 @@
  */
 import java.sql.SQLException;
 import java.sql.*;
+import java.util.*;
 public class alunoDAO {
     private Connection conn;
     
@@ -53,6 +54,35 @@ public class alunoDAO {
               System.out.println("Nome atualizado");
               
           }catch(Exception ex){System.out.println(ex);}
+      }
+      public List aluno()  
+      {
+          String sql="select* from aluno";
+          List alunos=new ArrayList();
+          
+          try
+          {
+              java.sql.PreparedStatement ps=conn.prepareStatement(sql);
+              ResultSet rs=ps.executeQuery();
+              while(rs.next())
+              {
+                  int cod=rs.getInt("codigo"); 
+                  String nome=rs.getString("nome");
+                  
+                  temp tp=new temp();
+                  tp.cod=cod;
+                  tp.nome=nome;
+                  alunos.add(tp);
+                  return alunos;
+              }
+              
+              ps.close();
+              
+          }catch(SQLException ex){
+              System.out.println("Não deu"); 
+          return alunos;}
+          return alunos;
+          
       }
 
          

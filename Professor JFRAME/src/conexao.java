@@ -17,8 +17,8 @@ public class conexao {
         // TODO code application logic here
         banco b= new banco();
         b.conectar();
-        JFrame jf= new JFrame();
-        jf.setVisible(true);
+       princ p= new princ();
+       p.setVisible(true);
         
     }
     
