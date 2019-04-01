@@ -1,48 +1,38 @@
--- phpMyAdmin SQL Dump
--- version 4.8.4
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1:3306
--- Generation Time: 27-Mar-2019 às 12:34
--- Versão do servidor: 5.7.24
--- versão do PHP: 7.2.14
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Database: `aulajava`
---
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `aluno`
---
-
-DROP TABLE IF EXISTS `aluno`;
-CREATE TABLE IF NOT EXISTS `aluno` (
-  `nome` varchar(40) DEFAULT NULL,
-  `cod` int(11) NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`cod`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
-
---
--- Extraindo dados da tabela `aluno`
---
-
-INSERT INTO `aluno` (`nome`, `cod`) VALUES
-('Caio', 1);
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+create database aulajava;
+use aulajava;
+create table aluno
+(
+	id int not null auto_increment primary key,
+	nome varchar (40)
+);
+create table professor 
+(
+	id int not null auto_increment primary key,
+	nome varchar (40)
+);
+create table curso
+(
+	id int not null auto_increment primary key,
+	nome varchar (40)
+);
+create table disciplina
+(
+	id int not null auto_increment primary key,
+	curso int not null,
+	FOREIGN KEY (curso) REFERENCES curso(id)
+);
+create table turma 
+(
+	id int not null auto_increment primary key,
+	prof_id int not null,
+	disciplina_id int not null,
+	foreign key (prof_id) references professor(id),
+	foreign key (disciplina_id) references disciplina(id)
+);
+create table turmadealunos
+(
+	turma int not null auto_increment primary key,
+	aluno_id int not null,
+	foreign key (turma) references turma(id),
+	foreign key (aluno_id) references aluno (id)
+);

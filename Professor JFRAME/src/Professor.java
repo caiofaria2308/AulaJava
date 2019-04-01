@@ -25,6 +25,7 @@ public class Professor extends javax.swing.JFrame {
         
         banco b= new banco();
         conn=b.conectar();
+
         
         
     }
@@ -136,9 +137,10 @@ public class Professor extends javax.swing.JFrame {
     private void cadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadActionPerformed
         // TODO add your handling code here:
         String n1=nome.getText();
-        alunoDAO al=new alunoDAO(conn);
+                        professorDAO pd=new professorDAO(conn);
+
         try{
-        al.insert(n1);
+        pd.insert(n1);
         }
         catch(Exception ex){System.out.println(ex);}
        
@@ -148,10 +150,10 @@ public class Professor extends javax.swing.JFrame {
     private void removerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removerActionPerformed
         // TODO add your handling code here:
        String c=oldcod.getText();
-       alunoDAO al=new alunoDAO(conn);
+       professorDAO pd= new professorDAO(conn);
        try
        {
-           al.remove(c);
+           pd.remove(c);
            
        }catch(Exception ex){showMessageDialog(null,ex);}
         
@@ -161,18 +163,18 @@ public class Professor extends javax.swing.JFrame {
         // TODO add your handling code here:
          String n1=nome.getText();
         String c=oldcod.getText();
-        alunoDAO al=new alunoDAO(conn);
+        professorDAO pd= new professorDAO(conn);
         try
         {
-        al.update(c, n1);
+        pd.update(c, n1);
         }catch(Exception ex){System.out.println(ex);}
     }//GEN-LAST:event_atualizar1ActionPerformed
 
     private void selectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectActionPerformed
 
-        alunoDAO al=new alunoDAO(conn);
+        professorDAO pd= new professorDAO(conn);
         try {
-            al.select();
+            pd.select();
             
             
             // TODO add your handling code here:
