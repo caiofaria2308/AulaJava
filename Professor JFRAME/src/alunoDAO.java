@@ -36,7 +36,7 @@ public class alunoDAO {
     {
         try
         {
-            String sql="update aluno set nome='"+nNew+"' where cod='"+cod+"' ";
+            String sql="update aluno set nome='"+nNew+"' where id='"+cod+"' ";
             java.sql.PreparedStatement ps= conn.prepareStatement(sql);
             ps.executeUpdate();
             showMessageDialog(null,"Atualizado com sucesso ");
@@ -47,7 +47,7 @@ public class alunoDAO {
     {
         try
         {
-            String sql="delete from aluno where cod='"+cod+"'";
+            String sql="delete from aluno where id='"+cod+"'";
             java.sql.PreparedStatement ps=conn.prepareStatement(sql);
             ps.executeUpdate();
             ps.close();
@@ -66,11 +66,11 @@ public class alunoDAO {
             
             while (rs.next())
             {
-                int id= rs.getInt("cod");
+                int id= rs.getInt("id");
                 String name= rs.getString("nome");
-               
                 
                 listar.add("\nCÓDIGO: "+id+" \nNOME: "+name+"\n");
+                
             }
             showMessageDialog(null,listar);
             

@@ -72,8 +72,9 @@ public class professorDAO {
                 
                 listar.add("\nCÓDIGO: "+id+" \nNOME: "+name+"\n");
             }
+            if(rs.next()){
             showMessageDialog(null,listar);
-            
+            }else {showMessageDialog(null,"NENHUM REGISTRO ENCONTRADO");}
         }catch(Exception ex){showMessageDialog(null,ex);        }
         
         
