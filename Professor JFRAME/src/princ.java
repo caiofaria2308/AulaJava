@@ -13,9 +13,15 @@ public class princ extends javax.swing.JFrame {
     /**
      * Creates new form princ
      */
-    public princ() {
+    public princ(String tempnome) {
         initComponents();
+              nome.setText(tempnome);
+
+        
+       
     }
+
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -29,6 +35,9 @@ public class princ extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         bAluno = new javax.swing.JButton();
         bProf = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        nome = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -52,6 +61,11 @@ public class princ extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setText("BEM VINDO(A)");
+
+        nome.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        nome.setText("jLabel4");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -59,19 +73,31 @@ public class princ extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(148, 148, 148)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(82, 82, 82)
                         .addComponent(bAluno)
                         .addGap(87, 87, 87)
-                        .addComponent(bProf)))
-                .addContainerGap(85, Short.MAX_VALUE))
+                        .addComponent(bProf))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(148, 148, 148)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(nome))
+                            .addComponent(jLabel1))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3)
+                .addContainerGap(79, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(51, 51, 51)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
+                    .addComponent(nome))
+                .addGap(18, 18, 18)
                 .addComponent(jLabel1)
                 .addGap(49, 49, 49)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -128,7 +154,7 @@ jf.setVisible(true);
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new princ().setVisible(true);
+                  
             }
         });
     }
@@ -137,5 +163,8 @@ jf.setVisible(true);
     private javax.swing.JButton bAluno;
     private javax.swing.JButton bProf;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel nome;
     // End of variables declaration//GEN-END:variables
 }

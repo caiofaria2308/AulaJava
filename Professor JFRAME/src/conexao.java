@@ -17,8 +17,8 @@ public class conexao {
         // TODO code application logic here
         banco b= new banco();
         b.conectar();
-       princ p= new princ();
-       p.setVisible(true);
+       login l= new login();
+       l.setVisible(true);
         
     }
     

@@ -37,3 +37,9 @@ create table turmadealunos
 	foreign key (turma) references turma(id),
 	foreign key (aluno_id) references aluno (id)
 );
+create table usuario
+(
+	id int not null auto_increment primary key,
+	cpf int not null,
+	senha varchar(50) not null
+);
