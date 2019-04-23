@@ -16,7 +16,7 @@ public class princ extends javax.swing.JFrame {
     public princ(String tempnome) {
         initComponents();
               nome.setText(tempnome);
-
+              
         
        
     }

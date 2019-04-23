@@ -40,6 +40,6 @@ create table turmadealunos
 create table usuario
 (
 	id int not null auto_increment primary key,
-	cpf int not null,
+	cpf varchar (20) not null,
 	senha varchar(50) not null
 );

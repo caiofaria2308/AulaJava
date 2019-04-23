@@ -13,11 +13,13 @@ import java.util.*;
 import static javax.swing.JOptionPane.showMessageDialog;
 public class usuarioDAO {
     private Connection conn;
-    
+    private String cpf;
     
     usuarioDAO(Connection c)
     {
+        
     this.conn=c;
+   
     }
     
     public void insert(String cpf, String senha,String nome) throws SQLException
@@ -69,8 +71,8 @@ public class usuarioDAO {
                 int id= rs.getInt("id");
                  cpf= rs.getString("cpf");
                 log=true;
-                princ p = new princ(cpf);
-                p.setVisible(true);
+                
+                this.cpf=cpf;
                 return log;
                 
                 
@@ -83,6 +85,10 @@ public class usuarioDAO {
         }
         return log;
         
+    }
+    public String cpf()
+    {
+    return this.cpf;
     }
 
   
