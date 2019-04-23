@@ -131,16 +131,10 @@ public class login extends javax.swing.JFrame {
            
            usuarioDAO ud= new usuarioDAO(conn);
         try {
-           String tempnome= ud.select(strcpf, strsenha);
+               boolean logar= ud.select(strcpf, strsenha);
+              
            
-           if (tempnome=="")
-           showMessageDialog(null,"USUÁRIO NÃO ENCONTRADO");
-           else 
-           {
-           princ p= new princ(tempnome);
-           p.setVisible(true);
-           }
-           
+          
             // TODO add your handling code here:
         } catch (SQLException ex) {
             showMessageDialog(null,ex);

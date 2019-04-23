@@ -23,7 +23,7 @@ public class usuarioDAO {
     public void insert(String cpf, String senha,String nome) throws SQLException
     {
         try{
-        String sql ="insert into usuario(nome,cpf,senha) values ('"+nome+"','"+cpf+"','"+senha+"')";
+        String sql ="insert into usuario(cpf,senha) values ('"+cpf+"','"+senha+"')";
        java.sql.PreparedStatement ps= conn.prepareStatement(sql);
        ps.executeUpdate();
         }
@@ -53,11 +53,12 @@ public class usuarioDAO {
             showMessageDialog(null,"Deletado com sucesso!");
         }catch(Exception ex){showMessageDialog(null,ex);}
     }
-    public String select(String strcpf, String senha) throws SQLException
+    public boolean select(String strcpf, String senha) throws SQLException
     {
      
         String sql="select* from usuario where cpf='"+strcpf+"' and senha='"+senha+"'";
-        String nome="";
+        String cpf="";
+        boolean log=false;
         try
         {
             java.sql.PreparedStatement ps= conn.prepareStatement(sql);
@@ -66,17 +67,21 @@ public class usuarioDAO {
             while (rs.next())
             {
                 int id= rs.getInt("id");
-                String cpf= rs.getString("cpf");
-                 nome=rs.getString("nome");
-                return nome;
+                 cpf= rs.getString("cpf");
+                log=true;
+                princ p = new princ(cpf);
+                p.setVisible(true);
+                return log;
+                
+                
                
                 
              
             }
             
-        }catch(Exception ex){showMessageDialog(null,ex); nome=""; return nome;  
+        }catch(Exception ex){showMessageDialog(null,ex); return log;  
         }
-        return nome;
+        return log;
         
     }
 
