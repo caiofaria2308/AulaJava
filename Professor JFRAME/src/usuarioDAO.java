@@ -22,15 +22,26 @@ public class usuarioDAO {
    
     }
     
-    public void insert(String cpf, String senha,String nome) throws SQLException
+    public boolean insert(String cpf, String senha,String nome) throws SQLException
     {
+        usuarioDAO u=new usuarioDAO(conn);
+        String testeCPF=u.verificar(cpf);
+        boolean validacao=false;
+        if(testeCPF.equals(cpf)){
+        showMessageDialog(null,"USUARIO JA CADASTRADO");
+        
+        
+        }else
+        {
         try{
         String sql ="insert into usuario(cpf,senha) values ('"+cpf+"','"+senha+"')";
-       java.sql.PreparedStatement ps= conn.prepareStatement(sql);
+        java.sql.PreparedStatement ps= conn.prepareStatement(sql);
        ps.executeUpdate();
+       validacao=true;
         }
         catch(SQLException ex){showMessageDialog(null,ex);}
-       
+         }
+        return validacao;
     }
     
     public void update(String cpf,String senha) throws SQLException
@@ -89,6 +100,29 @@ public class usuarioDAO {
     public String cpf()
     {
     return this.cpf;
+    }
+    
+    public String verificar(String strcpf) throws SQLException
+    {
+     
+        String sql="select* from usuario where cpf='"+strcpf+"' ";
+        String cpf="";
+        try
+        {
+            java.sql.PreparedStatement ps= conn.prepareStatement(sql);
+            ResultSet rs=ps.executeQuery();
+            
+            while (rs.next())
+            {
+                 cpf= rs.getString("cpf");
+                return cpf;
+                
+            }
+            
+        }catch(Exception ex){showMessageDialog(null,ex);   
+        }
+        return cpf;
+        
     }
 
   
