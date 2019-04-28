@@ -11,7 +11,7 @@
 import java.sql.*;
 import java.util.*;
 import static javax.swing.JOptionPane.showMessageDialog;
-public class professorDAO implements IDAO<Professor>{
+public class professorDAO implements IDAO<ProfessorObj>{
     private Connection conn;
     
     
@@ -20,10 +20,10 @@ public class professorDAO implements IDAO<Professor>{
     this.conn=c;
     }
     
-    public void insert(Professor p) throws SQLException
+    public void insert(ProfessorObj p) throws SQLException
     {
         try{
-        String sql ="insert into professor(nome) values ('"+p.nome()+"')";
+        String sql ="insert into professor(nome) values ('"+p.getNome()+"')";
        java.sql.PreparedStatement ps= conn.prepareStatement(sql);
        ps.executeUpdate();
        showMessageDialog(null,"Cadastrado com sucesso");
@@ -32,22 +32,22 @@ public class professorDAO implements IDAO<Professor>{
        
     }
     
-    public void update(Professor p) throws SQLException
+    public void update(ProfessorObj p) throws SQLException
     {
         try
         {
-            String sql="update professor set nome='"+p.old()+"' where id='"+p.getName()+"' ";
+            String sql="update professor set nome='"+p.getNome()+"' where id='"+p.getCod()+"' ";
             java.sql.PreparedStatement ps= conn.prepareStatement(sql);
             ps.executeUpdate();
             showMessageDialog(null,"Atualizado com sucesso ");
             
         }catch(SQLException ex){showMessageDialog(null,ex);}
     }
-    public void remove (Professor p)throws SQLException
+    public void remove (ProfessorObj p)throws SQLException
     {
         try
         {
-            String sql="delete from professor where id='"+p.old()+"'";
+            String sql="delete from professor where id='"+p.getCod()+"'";
             java.sql.PreparedStatement ps=conn.prepareStatement(sql);
             ps.executeUpdate();
             ps.close();
@@ -57,7 +57,7 @@ public class professorDAO implements IDAO<Professor>{
     public void select() throws SQLException
     {
      List listar= new ArrayList();
-        String sql="select* from professor";
+        String sql="select* from professor order by id";
         
         try
         {
@@ -72,13 +72,15 @@ public class professorDAO implements IDAO<Professor>{
                 
                 listar.add("\nCÓDIGO: "+id+" \nNOME: "+name+"\n");
             }
-            if(rs.next()){
+            
             showMessageDialog(null,listar);
-            }else {showMessageDialog(null,"NENHUM REGISTRO ENCONTRADO");}
-        }catch(Exception ex){showMessageDialog(null,ex);        }
+        }catch(Exception ex){showMessageDialog(null,ex);                showMessageDialog(null,"NENHUM REGISTRO ENCONTRADO");
+    }
         
         
     }
+
+  
 
     
 }

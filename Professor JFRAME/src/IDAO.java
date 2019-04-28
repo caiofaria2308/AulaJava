@@ -13,7 +13,7 @@ import java.sql.SQLException;
  */
 public interface IDAO<T> {
     void insert(T nome) throws SQLException;
-    void update(T oldCod,T nome)throws SQLException;
+    void update(T t)throws SQLException;
     void remove(T old)throws SQLException;
     void select()throws SQLException;
     

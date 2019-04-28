@@ -129,12 +129,7 @@ String strsenha=senha.getText();
                 showMessageDialog(null,"NÃO POSSÍVEL INSERIR");
             }
          if (val==true){
-             a.setNome(strnome);
-    try {
-        al.insert(a);
-    } catch (SQLException ex) {
-        showMessageDialog(null,ex);
-    }
+             showMessageDialog(null,"Cadastrado com sucesso !");
              login l = new login();
              l.setVisible(true);
          }

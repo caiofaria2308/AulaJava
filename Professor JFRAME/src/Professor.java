@@ -13,9 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import static javax.swing.JOptionPane.showMessageDialog;
 public class Professor extends javax.swing.JFrame {
-    private String name=null;
-    private String oCod=null;
-    private String newcod=null;
+  
     /**
      * Creates new form JFrame
      */
@@ -52,6 +50,7 @@ public class Professor extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setMinimumSize(new java.awt.Dimension(410, 318));
 
         remover.setText("Remover");
         remover.addActionListener(new java.awt.event.ActionListener() {
@@ -130,15 +129,20 @@ public class Professor extends javax.swing.JFrame {
                 .addComponent(select, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
+
+        setSize(new java.awt.Dimension(421, 349));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void cadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadActionPerformed
         // TODO add your handling code here:
-        this.name=nome.getText();
                         
         professorDAO pd=new professorDAO(conn);
+        ProfessorObj p = new ProfessorObj();
+        String n = nome.getText();
+        p.setNome(n);
         try{
-        pd.insert(this);
+        pd.insert(p);
         }
         catch(Exception ex){showMessageDialog(null,ex);}
        
@@ -149,13 +153,12 @@ public class Professor extends javax.swing.JFrame {
         // TODO add your handling code here:
        String c=oldcod.getText();
        professorDAO pd= new professorDAO(conn);
-       Professor p = new Professor();
-       this.oCod=c;
-       
+       ProfessorObj p = new ProfessorObj();
+       p.setCod(c);
        try
        {
 
-       pd.remove(this);
+       pd.remove(p);
        }catch(Exception ex){showMessageDialog(null,ex);}
         
     }//GEN-LAST:event_removerActionPerformed
@@ -165,15 +168,15 @@ public class Professor extends javax.swing.JFrame {
          String n1=nome.getText();
         String c=oldcod.getText();
         professorDAO pd= new professorDAO(conn);
-        Professor p = new Professor();
-        this.oCod=c;
-        this.name=n1;
+        ProfessorObj p = new ProfessorObj();
+        p.setNome(n1);
+        p.setCod(c);
         
         try
         {
-            pd.insert(p);
+            pd.update(p);
             
-        }catch(Exception ex){System.out.println(ex);}
+        }catch(Exception ex){showMessageDialog(null,ex);}
     }//GEN-LAST:event_atualizar1ActionPerformed
 
     private void selectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectActionPerformed
@@ -223,14 +226,7 @@ public class Professor extends javax.swing.JFrame {
             }
         });
     }
-    public String nome()
-    {
-        return this.name;
-    }
-    public String old()
-    {
-        return this.oCod;
-    }
+   
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton atualizar1;
     private javax.swing.JButton cad;

@@ -167,9 +167,12 @@ public class JFrame extends javax.swing.JFrame {
          String n1=nome.getText();
         String c=oldcod.getText();
         alunoDAO al=new alunoDAO(conn);
+        Aluno a = new Aluno();
+        a.setNome(n1);
+        a.setCod(c);
         try
         {
-        al.update(c, n1);
+        al.update(a);
         }catch(Exception ex){System.out.println(ex);}
     }//GEN-LAST:event_atualizar1ActionPerformed
 

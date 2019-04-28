@@ -36,7 +36,7 @@ public class alunoDAO implements IDAO<Aluno>{
     {
         try
         {
-            String sql="update aluno set nome='"+nNew+"' where id='"+cod+"' ";
+            String sql="update aluno set nome='"+a.getNome()+"' where id='"+a.getCod()+"' ";
             java.sql.PreparedStatement ps= conn.prepareStatement(sql);
             ps.executeUpdate();
             showMessageDialog(null,"Atualizado com sucesso ");
