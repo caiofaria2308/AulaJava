@@ -11,7 +11,7 @@
 import java.sql.*;
 import java.util.*;
 import static javax.swing.JOptionPane.showMessageDialog;
-public class professorDAO {
+public class professorDAO implements IDAO<Professor>{
     private Connection conn;
     
     
@@ -20,10 +20,10 @@ public class professorDAO {
     this.conn=c;
     }
     
-    public void insert(String nome) throws SQLException
+    public void insert(Professor p) throws SQLException
     {
         try{
-        String sql ="insert into professor(nome) values ('"+nome+"')";
+        String sql ="insert into professor(nome) values ('"+p.nome()+"')";
        java.sql.PreparedStatement ps= conn.prepareStatement(sql);
        ps.executeUpdate();
        showMessageDialog(null,"Cadastrado com sucesso");
@@ -32,22 +32,22 @@ public class professorDAO {
        
     }
     
-    public void update(String cod,String nNew) throws SQLException
+    public void update(Professor p) throws SQLException
     {
         try
         {
-            String sql="update professor set nome='"+nNew+"' where id='"+cod+"' ";
+            String sql="update professor set nome='"+p.old()+"' where id='"+p.getName()+"' ";
             java.sql.PreparedStatement ps= conn.prepareStatement(sql);
             ps.executeUpdate();
             showMessageDialog(null,"Atualizado com sucesso ");
             
         }catch(SQLException ex){showMessageDialog(null,ex);}
     }
-    public void remove (String cod)throws SQLException
+    public void remove (Professor p)throws SQLException
     {
         try
         {
-            String sql="delete from professor where id='"+cod+"'";
+            String sql="delete from professor where id='"+p.old()+"'";
             java.sql.PreparedStatement ps=conn.prepareStatement(sql);
             ps.executeUpdate();
             ps.close();
@@ -79,5 +79,6 @@ public class professorDAO {
         
         
     }
+
     
 }

@@ -19,6 +19,8 @@ public class JFrame extends javax.swing.JFrame {
      */
     private Connection conn;
     
+    
+    
     public JFrame() {
         super ("Upgrade Aplicação aluno");
         initComponents();
@@ -137,8 +139,10 @@ public class JFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         String n1=nome.getText();
         alunoDAO al=new alunoDAO(conn);
+        Aluno a= new Aluno();
+        a.setNome(n1);
         try{
-        al.insert(n1);
+        al.insert(a);
         }
         catch(Exception ex){System.out.println(ex);}
        
@@ -149,10 +153,11 @@ public class JFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
        String c=oldcod.getText();
        alunoDAO al=new alunoDAO(conn);
+       Aluno a= new Aluno();
+      a.setCod(c);
        try
        {
-           al.remove(c);
-           
+       al.remove(a);
        }catch(Exception ex){showMessageDialog(null,ex);}
         
     }//GEN-LAST:event_removerActionPerformed

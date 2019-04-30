@@ -13,7 +13,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import static javax.swing.JOptionPane.showMessageDialog;
 public class Professor extends javax.swing.JFrame {
-
+    private String name=null;
+    private String oCod=null;
+    private String newcod=null;
     /**
      * Creates new form JFrame
      */
@@ -132,13 +134,13 @@ public class Professor extends javax.swing.JFrame {
 
     private void cadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadActionPerformed
         // TODO add your handling code here:
-        String n1=nome.getText();
-                        professorDAO pd=new professorDAO(conn);
-
+        this.name=nome.getText();
+                        
+        professorDAO pd=new professorDAO(conn);
         try{
-        pd.insert(n1);
+        pd.insert(this);
         }
-        catch(Exception ex){System.out.println(ex);}
+        catch(Exception ex){showMessageDialog(null,ex);}
        
         
     }//GEN-LAST:event_cadActionPerformed
@@ -147,10 +149,13 @@ public class Professor extends javax.swing.JFrame {
         // TODO add your handling code here:
        String c=oldcod.getText();
        professorDAO pd= new professorDAO(conn);
+       Professor p = new Professor();
+       this.oCod=c;
+       
        try
        {
-           pd.remove(c);
-           
+
+       pd.remove(this);
        }catch(Exception ex){showMessageDialog(null,ex);}
         
     }//GEN-LAST:event_removerActionPerformed
@@ -160,9 +165,14 @@ public class Professor extends javax.swing.JFrame {
          String n1=nome.getText();
         String c=oldcod.getText();
         professorDAO pd= new professorDAO(conn);
+        Professor p = new Professor();
+        this.oCod=c;
+        this.name=n1;
+        
         try
         {
-        pd.update(c, n1);
+            pd.insert(p);
+            
         }catch(Exception ex){System.out.println(ex);}
     }//GEN-LAST:event_atualizar1ActionPerformed
 
@@ -212,6 +222,14 @@ public class Professor extends javax.swing.JFrame {
                 new JFrame().setVisible(true);
             }
         });
+    }
+    public String nome()
+    {
+        return this.name;
+    }
+    public String old()
+    {
+        return this.oCod;
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton atualizar1;

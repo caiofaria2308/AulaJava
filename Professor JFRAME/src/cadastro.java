@@ -119,7 +119,7 @@ String strnome=nome.getText();
 String strsenha=senha.getText();
             
 
-   
+        Aluno a=new Aluno();
          usuarioDAO ud=new usuarioDAO(conn);
          alunoDAO al=new alunoDAO(conn);
          boolean val=false;
@@ -129,14 +129,14 @@ String strsenha=senha.getText();
                 showMessageDialog(null,"NÃO POSSÍVEL INSERIR");
             }
          if (val==true){
+             a.setNome(strnome);
     try {
-       
-        al.insert(strnome);
-        login l = new login();
-        l.setVisible(true);
+        al.insert(a);
     } catch (SQLException ex) {
         showMessageDialog(null,ex);
     }
+             login l = new login();
+             l.setVisible(true);
          }
          else 
          {

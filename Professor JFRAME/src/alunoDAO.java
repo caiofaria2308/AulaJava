@@ -11,7 +11,7 @@
 import java.sql.*;
 import java.util.*;
 import static javax.swing.JOptionPane.showMessageDialog;
-public class alunoDAO {
+public class alunoDAO implements IDAO<Aluno>{
     private Connection conn;
     
     
@@ -20,10 +20,10 @@ public class alunoDAO {
     this.conn=c;
     }
     
-    public void insert(String nome) throws SQLException
+    public void insert(Aluno a) throws SQLException
     {
         try{
-        String sql ="insert into aluno(nome) values ('"+nome+"')";
+        String sql ="insert into aluno(nome) values ('"+a.getNome()+"')";
        java.sql.PreparedStatement ps= conn.prepareStatement(sql);
        ps.executeUpdate();
        showMessageDialog(null,"Cadastrado com sucesso");
@@ -32,7 +32,7 @@ public class alunoDAO {
        
     }
     
-    public void update(String cod,String nNew) throws SQLException
+    public void update(Aluno a) throws SQLException
     {
         try
         {
@@ -43,11 +43,11 @@ public class alunoDAO {
             
         }catch(SQLException ex){showMessageDialog(null,ex);}
     }
-    public void remove (String cod)throws SQLException
+    public void remove (Aluno a)throws SQLException
     {
         try
         {
-            String sql="delete from aluno where id='"+cod+"'";
+            String sql="delete from aluno where id='"+a.getCod()+"'";
             java.sql.PreparedStatement ps=conn.prepareStatement(sql);
             ps.executeUpdate();
             ps.close();
@@ -78,5 +78,7 @@ public class alunoDAO {
         
         
     }
+
+    
     
 }
